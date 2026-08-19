@@ -1,31 +1,24 @@
 {
   "schemaVersion": 1,
-  "id": "no-combat-elytra",
+  "id": "inventory-manager",
   "version": "${version}",
-  "name": "no-combat-elytra",
-  "description": "Disable elytra in combat",
+  "name": "Inventory Manager",
+  "description": "Set various rules for player inventories in minecraft",
   "authors": [],
   "contact": {},
-  "license": "All-Rights-Reserved",
+  "license": "MIT",
   "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
-    "fabric-datagen": [
-      "net.creeperdev.noCombatElytra.client.NoCombatElytraDataGenerator"
-    ],
     "client": [
-      "net.creeperdev.noCombatElytra.client.NoCombatElytraClient"
+      "net.johnseagull.inventoryManager.client.InventoryManagerClient"
     ],
     "main": [
-      "net.creeperdev.noCombatElytra.NoCombatElytra"
+      "net.johnseagull.inventoryManager.InventoryManager"
     ]
   },
   "mixins": [
-    "no-combat-elytra.mixins.json",
-    {
-      "config": "no-combat-elytra.client.mixins.json",
-      "environment": "client"
-    }
+    "inventory-manager.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",

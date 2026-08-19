@@ -1,14 +1,14 @@
-package net.creeperdev.noCombatElytra.client;
+package net.johnseagull.inventoryManager.client;
 
-import net.creeperdev.noCombatElytra.Figs;
+import net.johnseagull.inventoryManager.Figs;
 import net.fabricmc.api.ClientModInitializer;
 import net.johnseagull.figManagerClient.FigManagerClient;
 
-public class NoCombatElytraClient implements ClientModInitializer {
+public class InventoryManagerClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
         FigManagerClient g = new FigManagerClient();
-        g.init(Figs.instance,0.5f);
+        g.init(Figs.instance,0.7f);
     }
 }
