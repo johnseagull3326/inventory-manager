@@ -1,10 +1,10 @@
-package net.johnseagull.inventoryManager;
+package johnseagull.inventoryManager;
 
 
 
-import net.johnseagull.figManager.Fig.*;
-import net.johnseagull.figManager.FigGroup;
-import net.johnseagull.figManagerMC.DividerFig;
+import johnseagull.figManager.Fig.*;
+import johnseagull.figManager.FigGroup;
+import johnseagull.figManagerMC.DividerFig;
 import net.minecraft.ChatFormatting;
 
 import java.util.List;

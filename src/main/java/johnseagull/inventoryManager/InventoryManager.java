@@ -1,10 +1,10 @@
-package net.johnseagull.inventoryManager;
+package johnseagull.inventoryManager;
 
-import net.johnseagull.inventoryManager.Figs;
+import johnseagull.inventoryManager.Figs;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.johnseagull.figManagerMC.FigManagerMC;
-import net.johnseagull.inventoryManager.accessor.LivingEntityAccessor;
+import johnseagull.figManagerMC.FigManagerMC;
+import johnseagull.inventoryManager.accessor.LivingEntityAccessor;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;

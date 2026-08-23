@@ -11,10 +11,10 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "net.johnseagull.inventoryManager.client.InventoryManagerClient"
+      "johnseagull.inventoryManager.client.InventoryManagerClient"
     ],
     "main": [
-      "net.johnseagull.inventoryManager.InventoryManager"
+      "johnseagull.inventoryManager.InventoryManager"
     ]
   },
   "mixins": [

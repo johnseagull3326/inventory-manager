@@ -1,8 +1,8 @@
-package net.johnseagull.inventoryManager.client;
+package johnseagull.inventoryManager.client;
 
-import net.johnseagull.inventoryManager.Figs;
+import johnseagull.inventoryManager.Figs;
 import net.fabricmc.api.ClientModInitializer;
-import net.johnseagull.figManagerClient.FigManagerClient;
+import johnseagull.figManagerClient.FigManagerClient;
 
 public class InventoryManagerClient implements ClientModInitializer {
 
