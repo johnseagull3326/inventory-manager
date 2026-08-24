@@ -15,6 +15,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.PlayerEnderChestContainer;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 
 import java.util.List;
@@ -195,24 +196,13 @@ public class InventoryManager implements ModInitializer {
                                             }
                                         }
                                     }
-                                    if (!returned) {
-                                        //mic drop .. i mean item drop
-                                        player.drop(stack, false);
-                                        if (f.doMessage.value) {
-                                            player.sendSystemMessage(Component.literal("You did not have enough empty inventory space, so the item was dropped."), true);
-                                        }
-                                    }
                                 }
-                            }
-                            //in the very rare case i mess something up
-                            if (hasItemInside(stack, Items.AIR, inventory) == 2) {
-                                if (enderchest.getItem(0) != stack) {
+                                if (!returned) {
+                                    //mic drop .. i mean item drop
+                                    player.drop(stack, false);
                                     if (f.doMessage.value) {
-                                        player.sendSystemMessage(Component.literal("Could not verify deep nested item - returning...").withStyle(ChatFormatting.RED), true);
+                                        player.sendSystemMessage(Component.literal("You did not have enough empty inventory space, so the item was dropped."), true);
                                     }
-                                    enderchest.setItem(0, stack.copy());
-
-                                    //why so many closing braces :|
                                 }
                             }
                         }
@@ -231,37 +221,19 @@ public class InventoryManager implements ModInitializer {
         if (stack.has(DataComponents.CONTAINER)) {
             var shulker = stack.get(DataComponents.CONTAINER);
             if (shulker == null) return 3;
-            for (ItemStack shulkerItem : shulker.nonEmptyItems()) {
-                if (shulkerItem.is(item) || hasItemInside(shulkerItem, item, inventory) == 1) {
+            for (ItemStackTemplate shulkerItem : shulker.nonEmptyItems()) {
+                if (shulkerItem.is(item) || hasItemInside(shulkerItem.create(), item, inventory) == 1) {
                     return 1;
-                }
-                if (shulkerItem.has(DataComponents.BUNDLE_CONTENTS)) {
-                    for (ItemStack shulkerItem2 : shulkerItem.get(DataComponents.BUNDLE_CONTENTS).items()) {
-                        if (shulkerItem2.has(DataComponents.BUNDLE_CONTENTS)) {
-                            for (ItemStack shulkerItem3 : shulkerItem2.get(DataComponents.BUNDLE_CONTENTS).items()) {
-                                if (shulkerItem3.has(DataComponents.BUNDLE_CONTENTS)) {
-                                    inventory.setItem(0, stack);
-                                    return 2;
-                                }
-                            }
-                        }
-                    }
                 }
             }
         }
         if (stack.has(DataComponents.BUNDLE_CONTENTS)) {
             var bundle = stack.get(DataComponents.BUNDLE_CONTENTS);
             if (bundle == null) return 3;
-            for (ItemStack bundleItem : bundle.items()) {
-                if (bundleItem.getComponents().get(DataComponents.CUSTOM_NAME).getString().contains("minecraft:bundle")) {
-                    return 2;
-                }
-                if (bundleItem.is(item) || hasItemInside(bundleItem, item,inventory) == 1) {
+            for (ItemStackTemplate bundleItem : bundle.items()) {
+                if (bundleItem.is(item) || hasItemInside(bundleItem.create(), item,inventory) == 1) {
                     return 1;
                 }
-            }
-            if (stack.getComponents().get(DataComponents.CUSTOM_NAME).getString().contains("minecraft:bundle")) {
-                return 2;
             }
         }
         return 0;
