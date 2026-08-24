@@ -1,4 +1,4 @@
-This branch is for 1.21.11.
+This branch is for 26.2.x
 
 # Inventory Manager
 
