@@ -188,12 +188,9 @@ public class InventoryManager implements ModInitializer {
                                         inventory.setItem(j, stack.copy());
                                         returned = true;
                                         if (f.doMessage.value) {
-                                            //:D
-                                            if (player.getPlainTextName().equals("TheCreeper3326")) {
-                                                player.sendSystemMessage(Component.literal("Why did you do that, you knew you couldn't! :D"), false);
-                                            } else {
+
                                                 player.sendSystemMessage(Component.literal("You cannot have that item in your enderchest!"), true);
-                                            }
+
                                         }
                                     }
                                 }
