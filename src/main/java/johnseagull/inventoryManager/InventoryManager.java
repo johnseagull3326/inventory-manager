@@ -24,7 +24,7 @@ import java.util.Map;
 public class InventoryManager implements ModInitializer {
     //the figs...
     public static String figManagerName = "inventory_manager";
-    public static String projectVersion = "1.2";
+    public static String projectVersion = "1.1.1";
 
     @Override
     public void onInitialize() {
