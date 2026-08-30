@@ -95,18 +95,6 @@ public class InventoryManager implements ModInitializer {
                     for (int i = 0; i < inv.getContainerSize(); i++) {
                         ItemStack stack = inv.getItem(i);
                         String itemKey = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
-                        try {
-                            if (hasItemInside(stack, Items.AIR, inv) == 2) {
-                                if (inv.getItem(0) != stack) {
-                                    if (f.doMessage.value) {
-                                        player.sendSystemMessage(Component.literal("Could not verify deep nested item - returning...").withStyle(ChatFormatting.RED), true);
-                                    }
-                                    inv.setItem(0, stack.copy());
-                                }
-                            }
-                        } catch (NullPointerException ignore) {
-
-                        }
                         for (String s : f.blockedItems.value) {
                             ItemStack newstack = inv.getItem(i);
                             if (newstack.isEmpty()) continue;
@@ -188,9 +176,7 @@ public class InventoryManager implements ModInitializer {
                                         inventory.setItem(j, stack.copy());
                                         returned = true;
                                         if (f.doMessage.value) {
-
                                                 player.sendSystemMessage(Component.literal("You cannot have that item in your enderchest!"), true);
-
                                         }
                                     }
                                 }
@@ -256,11 +242,11 @@ public class InventoryManager implements ModInitializer {
                         returned = true;
                         if (type.equals("combat/hotbar")) {
                             String msg = f.combatHotbarMessage.value.replace("%T", String.valueOf(f.cooldown.value - time)).replace("%S", String.valueOf((Math.round((float) (f.cooldown.value - time) / 20))));
-                            player.sendSystemMessage(Component.literal(msg), false);
+                            player.sendSystemMessage(Component.literal(msg), true);
                         }
                         if (type.equals("combat/armor")) {
                             String msg = f.combatArmorMessage.value.replace("%T", String.valueOf(f.cooldown.value - time)).replace("%S", String.valueOf((Math.round((float) (f.cooldown.value - time) / 20))));
-                            player.sendSystemMessage(Component.literal(msg), false);
+                            player.sendSystemMessage(Component.literal(msg), true);
                         }
                         if (type.equals("general/hotbar")) {
                             player.sendSystemMessage(Component.literal(f.hotbarMessage.value), false);
