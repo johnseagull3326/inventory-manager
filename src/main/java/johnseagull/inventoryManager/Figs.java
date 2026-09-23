@@ -29,19 +29,15 @@ public class Figs {
 
 
     public DividerFig combat = new DividerFig("Combat", ChatFormatting.WHITE,true,false,false);
-    public DividerFig combatNote = new DividerFig("For messages: %S will represent the amound of cooldown in seconds","%T will represent the amount of cooldown in ticks", ChatFormatting.GRAY,false,true,false);
-
-
     public FigGroup cooldownStuff = new FigGroup(List.of("cooldown","cooldownOverMessage"),2,false,1f);
     public IntFig cooldown = new IntFig("Cooldown","Amount of time a player will have to wait before they can use combat-banned items",1200,0,Integer.MAX_VALUE);
     public StringFig cooldownOverMessage = new StringFig("Restore message", "Message to appear when cooldown ends", "You can now use combat-banned items",64);
-
+    public DividerFig combatNote = new DividerFig("For messages: %S will represent the amound of cooldown in seconds","%T will represent the amount of cooldown in ticks", ChatFormatting.GRAY,false,true,false);
     public StringFig combatHotbarMessage = new StringFig("Hotbar Message", "Message to appear when players have blocked items in their hotbar.","You cannot have certain items in your hotbar in combat. Usable in %S seconds",80);
     public StringFig combatArmorMessage = new StringFig("Armor Message", "Message to appear when players have blocked items in their armor slots.","You cannot have certain items equipped in combat. Usable in %S seconds",80);
 
-    public FigGroup combatItems = new FigGroup(List.of("combatArmorItems","combatHotbarItems"),2,false,1f);
-    public ListFig combatHotbarItems = new ListFig("Combat Armor Items", "Items that cannot be equipped during combat",1024,4,"Item registry name (example : minecraft:totem_of_undying)");
-    public ListFig combatArmorItems = new ListFig("Combat Hotbar Items", "Items that cannot be in the hotbar/offhand during combat",1024,4,"Item registry name (example : minecraft:totem_of_undying)");
+    public ListFig combatHotbarItems = new ListFig("Combat Hotbar Items", "Items that cannot be equipped during combat",1024,4,"Item registry name (example : minecraft:totem_of_undying)");
+    public ListFig combatArmorItems = new ListFig("Combat Armor Items", "Items that cannot be in the hotbar/offhand during combat",1024,4,"Item registry name (example : minecraft:totem_of_undying)");
 
     public DividerFig enderChest = new DividerFig("Ender chest", ChatFormatting.WHITE,true,false,false);
     public ListFig enderItems = new ListFig("Ender Chest Items","Items that cannot be placed into a user's enderchest",1024,4,"Item registry name (example : minecraft:dragon_egg");
