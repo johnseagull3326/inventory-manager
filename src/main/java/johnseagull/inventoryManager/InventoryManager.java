@@ -141,7 +141,6 @@ public class InventoryManager implements ModInitializer {
                     
                     //This is the TSA (type safety administration): what in the world is this and why does it work?
                     int time = ((LivingEntityAccessor) player).getCombatTime();
-                    ((LivingEntityAccessor) player).setCombatTime(time + 1);
                     if (time <= f.cooldown.value) {
                         // *deja vu*
                         for (int i = 0; i < 9; i++) {
