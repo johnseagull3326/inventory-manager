@@ -11,6 +11,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.PlayerEnderChestContainer;
 import net.minecraft.world.item.Item;
@@ -84,7 +85,7 @@ public class InventoryManager implements ModInitializer {
                             }
 
                             ItemStack dropStack = new ItemStack(item, tc - max);
-                            player.drop(dropStack, false);
+                            player.drop(dropStack, false, Prediction.PREDICTED);
 
                             if (f.doMessage.value) {
                                 player.sendSystemMessage(Component.literal("You can only have " + max + " of this item!"), true);
@@ -109,7 +110,7 @@ public class InventoryManager implements ModInitializer {
                                         //*yoink*
                                         ItemStack dropStack = stack.copy();
                                         inv.setItem(i, ItemStack.EMPTY);
-                                        player.drop(dropStack, false);
+                                        player.drop(dropStack, false, Prediction.PREDICTED);
                                         if(f.doMessage.value) {
                                             player.sendSystemMessage(Component.literal(f.blockedItemMessage.value), true);
                                         }
@@ -120,7 +121,7 @@ public class InventoryManager implements ModInitializer {
                                     //*yoink*
                                     ItemStack dropStack = stack.copy();
                                     inv.setItem(i, ItemStack.EMPTY);
-                                    player.drop(dropStack, false);
+                                    player.drop(dropStack, false, Prediction.PREDICTED);
                                     if(f.doMessage.value) {
                                         player.sendSystemMessage(Component.literal(f.blockedItemMessage.value), true);
                                     }
@@ -141,7 +142,6 @@ public class InventoryManager implements ModInitializer {
                     
                     //This is the TSA (type safety administration): what in the world is this and why does it work?
                     int time = ((LivingEntityAccessor) player).getCombatTime();
-                    ((LivingEntityAccessor) player).setCombatTime(time + 1);
                     if (time <= f.cooldown.value) {
                         // *deja vu*
                         for (int i = 0; i < 9; i++) {
@@ -182,7 +182,7 @@ public class InventoryManager implements ModInitializer {
                                 }
                                 if (!returned) {
                                     //mic drop .. i mean item drop
-                                    player.drop(stack, false);
+                                    player.drop(stack, false, Prediction.PREDICTED);
                                     if (f.doMessage.value) {
                                         player.sendSystemMessage(Component.literal("You did not have enough empty inventory space, so the item was dropped."), true);
                                     }
@@ -232,6 +232,7 @@ public class InventoryManager implements ModInitializer {
         //the return of the figs
         Figs f = (Figs) FigManagerMC.FIGS;
         for (String s : itemList) {
+            IO.println(s);
             if (BuiltInRegistries.ITEM.getKey(stack.getItem()).toString().equals(s)) {
                 for (int j = 9; j < 36; ++j) {
                     ItemStack stack1 = inv.getItem(j);
@@ -254,14 +255,16 @@ public class InventoryManager implements ModInitializer {
                         if (type.equals("general/armor")) {
                             player.sendSystemMessage(Component.literal(f.armorMessage.value), false);
                         }
+
                     }
                 }
                 if (!returned) {
 
                     ItemStack dropStack = stack.copy(); 
                     inv.setItem(i, ItemStack.EMPTY);
-                    player.drop(dropStack, false);
+                    player.drop(dropStack, false, Prediction.PREDICTED);
                 }
+                IO.println(returned + " " + i + s);
             }
         }
     }

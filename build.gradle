@@ -39,7 +39,7 @@ tasks.named('shadowJar', ShadowJar) {
     relocate 'johnseagull.figManagerMC', "johnseagull.${project.archives_base_name}.libs.figManagerMC"
 
     dependencies {
-        include(dependency('johnseagull:figmanager-26.2'))
+        include(dependency('johnseagull:figmanager-26.3'))
         include(dependency('johnseagull:figmanager'))
     }
 }
@@ -67,9 +67,9 @@ dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     implementation "net.fabricmc:fabric-loader:${project.loader_version}"
     implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-    api "johnseagull:figmanager-26.2:${project.fig_version}"
+    api "johnseagull:figmanager-26.3:${project.fig_version}"
     api "johnseagull:figmanager:${project.fig_version}"
-    shadowBundle "johnseagull:figmanager-26.2:${project.fig_version}"
+    shadowBundle "johnseagull:figmanager-26.3:${project.fig_version}"
     shadowBundle "johnseagull:figmanager:${project.fig_version}"
 }
 processResources {

@@ -4,7 +4,7 @@
   "version": "${version}",
   "name": "Inventory Manager",
   "description": "Set various rules for player inventories in minecraft",
-  "authors": [],
+  "authors": ["JohnSeagull"],
   "contact": {},
   "license": "MIT",
   "icon": "icon.png",
