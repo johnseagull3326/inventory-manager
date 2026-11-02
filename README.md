@@ -1,4 +1,4 @@
-This branch is for 26.2.x
+This branch is for 26.3.x
 
 # Inventory Manager
 
